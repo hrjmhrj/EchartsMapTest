@@ -22,7 +22,7 @@
     data () {
       return {
         insertHeight: '',
-        /*//  横向柱形图数据
+        //  横向柱形图数据
         radarData: [{name: 'Canada',
           outData: [12345, 32323, 42442],
           inData: [43212, 23423, 29034]
@@ -82,7 +82,7 @@
             data: [405, 11, 555, 234, 212, 477, 0],
             data2: [405, 11, 67, 333, 666, 113, 0]
           }
-        ]*/
+        ]
       }
     },
     methods: {
@@ -259,7 +259,7 @@
          * 显示点的坐标
          */
         var geoCoordMap = {
-          '中国': [130.0823, 34.2568],
+          'china': [130.0823, 28.2568],
           'Botswana': [4.895168, 52.370216],
           'Canada': [-130.895168, 70.2312],
           'Brazil': [-50.895168, -20.2312]
@@ -270,7 +270,7 @@
          */
         var data = [{
           id: 1,
-          name: '中国',
+          name: 'china',
           value: 10
         }, {
           id: 2,
@@ -425,10 +425,10 @@
               {name: 'Bhutan', value: 716.939},
               {name: 'Botswana', value: 1969.341},
               {name: 'Central African Republic', value: 4349.921},
-              {name: '加拿大', value: 34126.24},
+              {name: 'Canada', value: 34126.24},
               {name: 'Switzerland', value: 7830.534},
               {name: 'Chile', value: 17150.76},
-              {name: '中国', value: 1359821.465},
+              {name: 'China', value: 1359821.465},
               {name: 'Ivory Coast', value: 60508.978},
               {name: 'Cameroon', value: 20624.343},
               {name: 'Democratic Republic of the Congo', value: 62191.161},
@@ -533,7 +533,7 @@
               {name: 'Paraguay', value: 6459.721},
               {name: 'Qatar', value: 1749.713},
               {name: 'Romania', value: 21861.476},
-              {name: '俄罗斯', value: 21861.476},
+              {name: 'Russia', value: 21861.476},
               {name: 'Rwanda', value: 10836.732},
               {name: 'Western Sahara', value: 514.648},
               {name: 'Saudi Arabia', value: 27258.387},
@@ -565,7 +565,7 @@
               {name: 'Uganda', value: 33987.213},
               {name: 'Ukraine', value: 46050.22},
               {name: 'Uruguay', value: 3371.982},
-              {name: '美国', value: 312247.116},
+              {name: 'United States of America', value: 312247.116},
               {name: 'Uzbekistan', value: 27769.27},
               {name: 'Venezuela', value: 236.299},
               {name: 'Vietnam', value: 89047.397},
@@ -575,12 +575,7 @@
               {name: 'South Africa', value: 51452.352},
               {name: 'Zambia', value: 13216.985},
               {name: 'Zimbabwe', value: 13076.978}
-            ],nameMap:{
-                  'Russia':'俄罗斯',
-                  'Canada':'加拿大',
-                  'China':'中国',
-                  'United States':'美国',
-              },
+            ]
           }, {
             type: 'lines',
             zlevel: 2,
@@ -589,7 +584,7 @@
               period: 6,
               trailLength: 0.1,
               color: '#db9982',
-              //symbol: planePath,
+              symbol: planePath,
               symbolSize: 8
             },
             lineStyle: {
@@ -610,7 +605,7 @@
                 }
               }
             },
-            data: formtGCData(geoCoordMap, data, '中国', true)
+            data: formtGCData(geoCoordMap, data, 'china', true)
           }, {
             type: 'lines',
             color: '#000',
@@ -620,7 +615,7 @@
               period: 6,
               trailLength: 0.1,
               color: '#000',
-              //symbol: planePath,
+              symbol: planePath,
               symbolSize: 8
             },
             lineStyle: {
@@ -631,7 +626,7 @@
                 curveness: 0.2
               }
             },
-            data: formtGCData(geoCoordMap, data, '中国', false)
+            data: formtGCData(geoCoordMap, data, 'china', false)
           },
           {
             type: 'effectScatter',
@@ -658,7 +653,7 @@
                 borderColor: 'gold'
               }
             },
-            data: formtVData(geoCoordMap, data, '中国')
+            data: formtVData(geoCoordMap, data, 'china')
           },
           {
             type: 'effectScatter',
@@ -700,9 +695,9 @@
             }
           })
         })
-        // 中国双击事件
+        // china双击事件
         myChart.on('dblclick', (param) => {
-          if (param.data.name.toLowerCase() === '中国') {
+          if (param.data.name.toLowerCase() === 'china') {
             this.$router.push('/map')
           }
         })
@@ -713,9 +708,9 @@
       this.$refs.insertCharts.style.height = window.innerHeight * 0.33 + 'px'
       this.$refs.rightTwoCharts.style.height = window.innerHeight * 0.3 + 'px'
       this.$refs.peopleInsertCharts.style.height = window.innerHeight * 0.3 + 'px'
-     // this.drawLine()
-     // this.rightTwoCharts()
-     // this.rightBottomRightCharts()
+      this.drawLine()
+      this.rightTwoCharts()
+      this.rightBottomRightCharts()
       this.map()
     }
   }
