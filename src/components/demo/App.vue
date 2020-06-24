@@ -10,6 +10,7 @@
 <script>
     import echarts from 'echarts'
     import './js/world.js'  //'echarts/map/js/world.js'
+    //npm install echarts --save  第一步 上面第二步引入
 
     export default {
         name: 'demo',
@@ -291,19 +292,26 @@
                         max: 1000000,
                         text: ['High', 'Low'],
                         realtime: true,
-                        calculable: true,
+                        calculable: true,//是否显示拖拽用的手柄（手柄能拖拽调整选中范围）。
                         color: ['orangered', 'yellow', 'lightskyblue']            //  生成地图颜色以及发散点颜色
 
                     },
-                    tooltip: {
-                        trigger: 'item'
+                    tooltip: {// 鼠标移到图里面的浮动提示框
+                        trigger: 'item'//出发方式
+                        /*show:true, //鼠标移入是否触发数据
+                        formatter:'{b}-销售数量：{c}'*/
                     },
                     geo: {
-                        map: 'world',
+                        map: 'world',// 表示世界地图
                         label: {
                             emphasis: {
                                 show: false
-                            }
+                            },
+                            /*normal: {
+                                show: true, // 是否显示对应地名
+                                textStyle: {
+                                    color: 'rgba(0,0,0,0.4)'
+                             }*/
                         },
                         roam: false,
                         silent: true,
@@ -313,19 +321,38 @@
                                 borderColor: 'transparent'//底层色边框  目前透明
                             },
                             emphasis: {
-                                areaColor: 'transparent'
+                                areaColor: 'transparent',
+                                /*shadowOffsetX: 0,
+                                shadowOffsetY: 0,
+                                shadowBlur: 20,
+                                borderWidth: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'*/
                             }
                         }
                     },
                     series: [{
-                        type: 'map',
+                        /*type: 'scatter',
+                        coordinateSystem: 'geo' // 对应上方配置
+                        },
+                        {*/
+                        /*name:'地图',*/
+                        type: 'map',//地图种类
                         mapType: 'world',
-                        zoom: 1.2,
+                        /*geoIndex: 0,*/
+                        /*label: {  //图形上的文本标签，可用于说明图形的一些数据信息
+                            show:true,
+                        },*/
+                        zoom: 1.2,//放大比例
                         name:'地名和企业数量',// 浮动框的标题
                         mapLocation: {
                             y: 100
                         },
-                        itemStyle: {
+                        itemStyle: {//地图区域的多边形 图形样式。
+                            /*emphasis:{ //高亮状态下的样试
+                                label:{
+                                    show:true,
+                                }
+                            },*/
                             emphasis: {label: {show: true}}
                         },
                         // 对应生成地图颜色板块数据
@@ -553,7 +580,7 @@
                             {name: '美属萨摩亚', value: 216.985},
                             {name: '津巴布韦', value: 13076.978},
                             {name: '美属维尔京群岛', value: 13076.978}
-                        ], nameMap: {
+                        ], nameMap: {//对应的中文名
                             'Isle of Man': '英国属地曼岛',
                             'Kashmir': '克什米尔-巴',
                             'Kashmirb': '克什米尔-印',
@@ -781,6 +808,9 @@
                             'Aland': "奥兰群岛",
                         },
                     }, {
+                        /*showEffectOn: 'render',//配置什么时候显示特效
+                        coordinateSystem:'geo',//该系列使用的坐标系
+                        symbolSize:10,//标记的大小*/
                         type: 'lines',
                         zlevel: 2,
                         effect: {
@@ -799,7 +829,7 @@
                                 curveness: 0.1
                             }
                         },
-                        itemStyle: {
+                        itemStyle: {//地图区域的多边形 图形样式。
                             normal: {
                                 label: {
                                     show: true,
@@ -835,7 +865,7 @@
                         {
                             type: 'effectScatter',
                             coordinateSystem: 'geo',
-                            zlevel: 2,
+                            zlevel: 2,//层级
                             rippleEffect: {
                                 period: 4,
                                 scale: 10,
@@ -916,7 +946,7 @@
     #demo {
         display: flex;
         width: 100%;
-        background: rgba(245, 96, 255, 0.5);
+        background: rgba(245, 96, 255, 0.5);/*地图背景色*/
     }
 
     #demoMap {
