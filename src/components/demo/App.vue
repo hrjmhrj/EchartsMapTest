@@ -9,7 +9,7 @@
 </template>
 <script>
     import echarts from 'echarts'
-    import 'echarts/map/js/world.js'
+    import './js/world.js'  //'echarts/map/js/world.js'
 
     export default {
         name: 'demo',
@@ -321,6 +321,7 @@
                         type: 'map',
                         mapType: 'world',
                         zoom: 1.2,
+                        name:'地名和企业数量',// 浮动框的标题
                         mapLocation: {
                             y: 100
                         },
