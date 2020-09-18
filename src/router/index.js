@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import browser from '@/components/browser.vue'
 import map from '@/components/map.vue'
-import demo from '@/components/demo/App.vue'
+import demo from '@/components/demo/App4.vue'
 Vue.use(Router)
 
 export default new Router({
