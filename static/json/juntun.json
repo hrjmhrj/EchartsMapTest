@@ -1,9 +1,11 @@
-,
+{
+  "type": "FeatureCollection",
+  "features": [
     {
       "type": "Feature",
       "properties": {
-        "name": "������"
-        },
+        "name": "军屯镇"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -664,3 +666,5 @@
         ]
       }
     }
+  ]
+}

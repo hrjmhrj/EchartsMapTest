@@ -1,9 +1,11 @@
-,
+{
+  "type": "FeatureCollection",
+  "features": [
     {
       "type": "Feature",
       "properties": {
-        "name": "����԰�ֵ�"
-        },
+        "name": "斑竹园街道"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -836,3 +838,5 @@
         ]
       }
     }
+  ]
+}

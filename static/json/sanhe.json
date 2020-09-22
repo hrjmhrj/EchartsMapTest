@@ -1,9 +1,11 @@
-,
+{
+  "type": "FeatureCollection",
+  "features": [
     {
       "type": "Feature",
       "properties": {
-        "name": "���ӽֵ�"
-        },
+        "name": "三河街道"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -555,4 +557,6 @@
           ]
         ]
       }
-    }
+}
+]
+}

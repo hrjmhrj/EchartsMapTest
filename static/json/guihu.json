@@ -1,9 +1,11 @@
-,
+{
+  "type": "FeatureCollection",
+  "features": [
     {
       "type": "Feature",
-      "properties":  {
-        "name": "����ֵ�"
-        },
+      "properties": {
+        "name": "桂湖街道"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -540,3 +542,5 @@
         ]
       }
     }
+  ]
+}

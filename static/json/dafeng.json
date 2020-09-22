@@ -1,13 +1,15 @@
-,
 {
+  "type": "FeatureCollection",
+  "features": [
+    {
       "type": "Feature",
       "properties": {
-        "name": "���ֵ�"
-        },
+        "name": "大丰街道"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
-         [
+          [
             [
               104.06108379364014,
               30.79235470274619
@@ -1424,3 +1426,5 @@
         ]
       }
     }
+  ]
+}

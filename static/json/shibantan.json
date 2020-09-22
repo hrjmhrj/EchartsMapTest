@@ -1,9 +1,11 @@
-,
+{
+  "type": "FeatureCollection",
+  "features": [
     {
       "type": "Feature",
       "properties": {
-        "name": "ʯ��̲�ֵ�"
-        },
+        "name": "石板滩街道"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -1384,3 +1386,5 @@
         ]
       }
     }
+  ]
+}
