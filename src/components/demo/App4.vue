@@ -1,11 +1,11 @@
 <template>
-    <div  :style="{width:'22vw'}" class="mapDiv">
+    <div  :style="{width:'30vw'}" class="mapDiv">
         <div :style="{width:'100vw'}" class="echart" :id="dtdivid"></div>
         <div :style="{width:'100vw'}" class="echart1" :id="dtdivid+'1'"></div>
         <div :style="{width:'100vw'}" class="echart2" :id="dtdivid+'2'"></div>
         <div :style="{width:'100vw'}" class="echart3" :id="dtdivid+'3'"></div>
-        <div v-show="this.show" @click="closediv" :style="{width:'100vw'}" class="echart4" :id="dtdivid+'4'"></div>
-    </div>
+        <div v-show="this.show" @dblclick="closediv" :style="{width:'100vw'}" class="echart4" :id="dtdivid+'4'"></div>
+    </div><!--dblclick 双击  click 单击-->
 </template>
 
 <script>
@@ -55,7 +55,7 @@
         data() {
             return {
                 show: false,
-                dtdivid:'map',
+                dtdivid:'mapdiv',
                 chart: null,
                 chart2: null,
                 chart3: null,
@@ -355,6 +355,7 @@
                     series: [
                         {
                             type: 'map',
+                            coordinateSystem: 'geo',
                             mapType: 'showmap4',
                             data: testData,
                             //center: [104.00619506835936,30.873940237887624],//中心点 就是页面显示以这个点为中心
@@ -376,12 +377,13 @@
                                         ontSize: 16,
                                         fontWeight: 'bold',
                                         color: 'white'
-                                     },
+                                    },
                                     align: 'center',
                                     verticalAlign: 'middle',
                                     fontSize: 16,
                                     fontWeight: 'bold',
                                     color: 'white',
+                                    formatter: '{b}\n{c}万',
                                 },
                                 emphasis:{//选中状态
                                     color: 'white'
@@ -391,6 +393,10 @@
                         //点
                         {
                             type: 'effectScatter',
+                            animationDelay: function (idx) {
+                                return idx * 30;
+                            },//初始动画效果
+                            animationThreshold: 100,//大于这个数会关闭动画
                             legendHoverLink: true,
                             coordinateSystem: 'geo',
                             //center: [104.00619506835936,30.873940237887624],//中心点 就是页面显示以这个点为中心
@@ -453,7 +459,7 @@
 <style scoped>
     /*中间div*/
     .mapDiv {
-        height: 87.3vh;
+        height: 80vh;
         position: relative;
         float: left;
     }
@@ -462,14 +468,14 @@
     .echart {
         position: absolute;
         z-index: 120;
-        height: 90vh;
+        height: 80vh;
     }
 
     /*背景1*/
     .echart1 {
         position: absolute;
         z-index: 80;
-        height: 90vh;
+        height: 80vh;
         padding-left: 0.3%;
         padding-top: 1.7%;
     }
@@ -478,7 +484,7 @@
     .echart2 {
         position: absolute;
         z-index: 60;
-        height: 90vh;
+        height: 80vh;
         padding-left: 0.8%;
         padding-top: 3%;
     }
@@ -487,7 +493,7 @@
     .echart3 {
         position: absolute;
         z-index: 40;
-        height: 90vh;
+        height: 80vh;
         padding-left: 1%;
         padding-top: 4%;
     }
@@ -496,9 +502,10 @@
     .echart4 {
         position: absolute;
         z-index: 160;
-        height: 90vh;
-        background: #fff!important;
+        height: 100vh;
+        width: 101vw;
+        left: -4%;
+        background: rgba(0,0,0,0.6)!important;
     }
-
 
 </style>
