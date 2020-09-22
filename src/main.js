@@ -10,7 +10,14 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // 引入echarts
 import echarts from 'echarts'
+// 全局echarts
 Vue.prototype.$echarts = echarts
+
+// 引入jQuery
+import $ from '../static/jquery-3.3.1.min';
+window.jQuery = $;
+window.$ = $;
+
 
 Vue.use(ElementUI);
 new Vue({
