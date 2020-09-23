@@ -1,10 +1,53 @@
 <template>
-    <div  :style="{width:'30vw'}" class="mapDiv">
-        <div :style="{width:'100vw'}" class="echart" :id="dtdivid"></div>
-        <div :style="{width:'100vw'}" class="echart1" :id="dtdivid+'1'"></div>
-        <div :style="{width:'100vw'}" class="echart2" :id="dtdivid+'2'"></div>
-        <div :style="{width:'100vw'}" class="echart3" :id="dtdivid+'3'"></div>
-        <div v-show="this.show" @dblclick="closediv" :style="{width:'100vw'}" class="echart4" :id="dtdivid+'4'"></div>
+    <div class="mapDiv">
+        <div class="echart" :id="dtdivid"></div>
+        <div class="echart1" :id="dtdivid+'1'"></div>
+        <div class="echart2" :id="dtdivid+'2'"></div>
+        <div class="echart3" :id="dtdivid+'3'"></div>
+        <div v-show="this.show" @dblclick="closediv" class="echart4" :id="dtdivid+'4'"></div>
+        <div v-show="this.show1" @dblclick="closediv1" class="companyDetails">
+            <table :data="companyData" align="center" class="companytable">
+                <tr>
+                    <td>纳税人名称：{{companyData.name}}</td>
+                </tr>
+                <tr>
+                    <td>今年税收：{{companyData.jnss}}</td>
+                </tr>
+                <tr>
+                    <td>标准税负：{{companyData.bzsf}}</td>
+                </tr>
+                <tr>
+                    <td>纳税人识别号：{{companyData.nsrsbh}}</td>
+                </tr>
+                <tr>
+                    <td>经营地址：{{companyData.yydz}}</td>
+                </tr>
+                <tr>
+                    <td>企业法人：{{companyData.qyfr}}</td>
+                </tr>
+                <tr>
+                    <td>注册地址：{{companyData.zcdz}}</td>
+                </tr>
+                <tr>
+                    <td>登记注册类型：{{companyData.djlx}}</td>
+                </tr>
+                <tr>
+                    <td>登记日期：{{companyData.djrq}}</td>
+                </tr>
+                <tr>
+                    <td>所属税务机关：{{companyData.swjg}}</td>
+                </tr>
+                <tr>
+                    <td>纳税人状态：{{companyData.nsrzt}}</td>
+                </tr>
+                <tr>
+                    <td>信用等级：{{companyData.xydj}}</td>
+                </tr>
+                <tr>
+                    <td>当前是否申请延期申报：{{companyData.sfsqyqsb}}</td>
+                </tr>
+            </table>
+        </div>
     </div><!--dblclick 双击  click 单击-->
 </template>
 
@@ -21,46 +64,72 @@
     import xindou from '../../../static/json/xindou.json'//引进新都街道
     import xinfan from '../../../static/json/xinfan.json'//引进新繁街道
 
-    const testDemo = []
-    testDemo.push({name: '斑竹园街道', value: '99'})
-    testDemo.push({name: '大丰街道', value: '11'})
-    testDemo.push({name: '桂湖街道', value: '22'})
-    testDemo.push({name: '军屯镇', value: '33'})
-    testDemo.push({name: '清流镇', value: '44'})
-    testDemo.push({name: '三河街道', value: '55'})
-    testDemo.push({name: '石板滩街道', value: '66'})
-    testDemo.push({name: '新都街道', value: '77'})
-    testDemo.push({name: '新繁街道', value: '88'})
-    const testData = []
-    const testName = {
-        '石板滩街道':"shibantan",
-        '斑竹园街道':"banzuyuan",
-        '大丰街道':"dafeng",
-        '桂湖街道':"guihu",
-        '军屯镇':"juntun",
-        '清流镇':"qingliu",
-        '三河街道':"sanhe",
-        '新都街道':"xindou",
-        '新繁街道':"xinfan",
-    }
-    for (let i = 0; i < testDemo.length; i++) {
-        testData.push({
-            name: testDemo[i].name,
-            value: testDemo[i].value,
-        })
-    }
     export default {
         name: "demo",
         components: {},
         data() {
             return {
+                companyData:{},
+                companyDetails:[
+                    {
+                     name: "新繁初号机",
+                     jnss:123,
+                     bzsf:345,
+                     nsrsbh:5423123,
+                     yydz:"四川省成都市新都区",
+                     qyfr:"绫波丽",
+                     zcdz:"四川省成都市新都区",
+                     djlx:"私营股份有限公司",
+                     djrq:"2020-09-22",
+                     swjg:"XXXXX",
+                     nsrzt:"正常",
+                     xydj:"A",
+                     sfsqyqsb:"否"
+                    },
+                    {
+                    name: "新繁二号点",
+                    jnss:123,
+                    bzsf:345,
+                    nsrsbh:5423123,
+                    yydz:"四川省成都市新都区",
+                    qyfr:"倪豆子",
+                    zcdz:"四川省成都市新都区",
+                    djlx:"私营股份有限公司",
+                    djrq:"2020-09-21",
+                    swjg:"XXXXXX",
+                    nsrzt:"正常",
+                    xydj:"A",
+                    sfsqyqsb:"是"
+                    },
+        ],
+                testName: {
+                    '石板滩街道':"shibantan",
+                    '斑竹园街道':"banzuyuan",
+                    '大丰街道':"dafeng",
+                    '桂湖街道':"guihu",
+                    '军屯镇':"juntun",
+                    '清流镇':"qingliu",
+                    '三河街道':"sanhe",
+                    '新都街道':"xindou",
+                    '新繁街道':"xinfan",
+                },
+                testData:[
+                    {name: "斑竹园街道", value: "99"},
+                    {name: "大丰街道", value: "11"},
+                    {name: "桂湖街道", value: "22"},
+                    {name: "军屯镇", value: "33"},
+                    {name: "清流镇", value: "44"},
+                    {name: "三河街道", value: "55"},
+                    {name: "石板滩街道", value: "66"},
+                    {name: "新都街道", value: "77"},
+                    {name: "新繁街道", value: "88"}],
                 show: false,
+                show1: false,//详情
                 dtdivid:'mapdiv',
                 chart: null,
                 chart2: null,
                 chart3: null,
                 chart4: null,
-                testData: testData,
                 json:{
                     xindoudt:xindoudt,
                     xdwapiant:xdwapiant,
@@ -89,10 +158,10 @@
                 _this.$echarts.registerMap('inintMap', xdwapiant)
                 _this.chart.on('click',function (params) {//点击事件
                     //console.log(params);
-                    if( testName.hasOwnProperty(params.name)){
+                    if( _this.testName.hasOwnProperty(params.name)){
                         //console.log("0000000000000000000000000");
                         //console.log(testName[params.name]);
-                        _this.tcmap(testName[params.name]);
+                        _this.tcmap(_this.testName[params.name]);
                     }else {
                         console.log("点击事件出错，不包含点击的地图");
                     }
@@ -151,7 +220,7 @@
                         type: 'map',
                         coordinateSystem: 'geo',
                         mapType: 'inintMap',
-                        data: testData,
+                        data: this.testData,
                         center: [104.12567138671875, 30.84623693902637],
                         zoom: 1,
                         geoIndex: 10,
@@ -306,9 +375,26 @@
                 this.show = true;
                 this.chart4 = this.$echarts.init(document.getElementById(this.dtdivid+'4'))
                 this.$echarts.registerMap('showmap4', this.json[name])
+                let _this = this
+                _this.chart4.on('click',function (params) {//点击事件
+                    console.log(params);
+                    _this.show1 = false
+                    if ((params.componentType == "series") || (params.seriesType == "effectScatter")) {
+                        console.log("1111");
+                        console.log(params.name);
+                        for (let i = 0; i <_this.companyDetails.length ; i++) {
+                            if (_this.companyDetails[i].name == params.name){
+                                console.log("名字相等进");
+                                _this.companyData = _this.companyDetails[i]
+                                _this.show1 = true
+                            }
+                        }
+                    }
+                })
                 this.chart4.setOption({
                     visualMap: {
                         show: false,
+                        silent: true,//是否可以触发点击事件
                         type: 'piecewise',
                         min: 0,//最小值
                         max: 100,//最大值  用下面的颜色数组实现热力体现
@@ -357,7 +443,7 @@
                             type: 'map',
                             coordinateSystem: 'geo',
                             mapType: 'showmap4',
-                            data: testData,
+                            data: this.testData,
                             //center: [104.00619506835936,30.873940237887624],//中心点 就是页面显示以这个点为中心
                             zoom: 1,//放大比例
                             aspectScale: 0.85, // 长宽比
@@ -398,7 +484,7 @@
                             },//初始动画效果
                             animationThreshold: 100,//大于这个数会关闭动画
                             legendHoverLink: true,
-                            coordinateSystem: 'geo',
+                            coordinateSystem: 'geo',//坐标系
                             //center: [104.00619506835936,30.873940237887624],//中心点 就是页面显示以这个点为中心
                             zoom: 1,
                             aspectScale: 0.85, // 长宽比
@@ -430,7 +516,7 @@
                                 brushType: 'stroke',
                             },
                             legendHoverLink: true,//点波纹动态效果
-                            symbolSize: 12,
+                            symbolSize: 18,
                             /*function (val) {//根据数值大小控制点的大小
                                return val[2] / 1;
                            },*/
@@ -438,7 +524,7 @@
                                 {name: '新繁初号机', value: [104.00619506835936,30.873940237887624],
                                     tooltip:{formatter:'{b}'},
                                 },
-                                {name: '新繁二号点', value: [104.00919506835936,30.875940237887624],
+                                {name: '新繁二号点', value: [104.01019506835936,30.876040237887624],
                                     tooltip:{formatter:'{b}'},
                                 },
                                 {name: '新繁三号', value: [104.00119506835936,30.871940237887624],
@@ -451,6 +537,10 @@
             },
             closediv(){
                 this.show = false
+                this.show1 = false
+            },
+            closediv1(){
+                this.show1 = false
             },
         },
     }
@@ -459,6 +549,7 @@
 <style scoped>
     /*中间div*/
     .mapDiv {
+        width: 30vw;
         height: 80vh;
         position: relative;
         float: left;
@@ -466,6 +557,7 @@
 
     /*瓦片图形*/
     .echart {
+        width: 100vw;
         position: absolute;
         z-index: 120;
         height: 80vh;
@@ -473,6 +565,7 @@
 
     /*背景1*/
     .echart1 {
+        width: 100vw;
         position: absolute;
         z-index: 80;
         height: 80vh;
@@ -482,6 +575,7 @@
 
     /*背景2*/
     .echart2 {
+        width: 100vw;
         position: absolute;
         z-index: 60;
         height: 80vh;
@@ -491,6 +585,7 @@
 
     /*背景3*/
     .echart3 {
+        width: 100vw;
         position: absolute;
         z-index: 40;
         height: 80vh;
@@ -503,9 +598,26 @@
         position: absolute;
         z-index: 160;
         height: 100vh;
-        width: 101vw;
+        width: 102vw;
         left: -4%;
         background: rgba(0,0,0,0.6)!important;
     }
 
+    /*表格外层div*/
+    .companyDetails{
+        margin-top: 52vh;
+        margin-left: 11vw;
+        z-index: 180;
+        position: absolute;
+        border:1px solid rgba(255,255,255,0.4);
+        background: rgba(85,255,119,0.5);
+    }
+
+    /*表格*/
+    .companytable{
+        width: 20vw;
+        height: 30vh;
+        margin-left: 5%;
+        color: #FFF;
+    }
 </style>
