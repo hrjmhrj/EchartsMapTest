@@ -251,7 +251,7 @@
                     //点
                         {
                             type: 'effectScatter',
-                            legendHoverLink: true,
+                            legendHoverLink: true,//联动高亮效果
                             coordinateSystem: 'geo',
                             center: [104.12567138671875, 30.84623693902637],
                             zoom: 1,
@@ -283,7 +283,7 @@
                                 scale: 8,
                                 brushType: 'stroke',
                             },
-                            legendHoverLink: true,//点波纹动态效果
+                            legendHoverLink: true,//联动高亮效果
                             symbolSize: 12,
                             /*function (val) {//根据数值大小控制点的大小
                                return val[2] / 1;
@@ -392,7 +392,7 @@
                     }
                 })
                 this.chart4.setOption({
-                    visualMap: {
+                    visualMap: {//会与下面点的颜色冲突  可以看map里面的页面  实现不同数据 点颜色不同
                         show: false,
                         silent: true,//是否可以触发点击事件
                         type: 'piecewise',
@@ -483,7 +483,7 @@
                                 return idx * 30;
                             },//初始动画效果
                             animationThreshold: 100,//大于这个数会关闭动画
-                            legendHoverLink: true,
+                            legendHoverLink: true,//联动高亮效果
                             coordinateSystem: 'geo',//坐标系
                             //center: [104.00619506835936,30.873940237887624],//中心点 就是页面显示以这个点为中心
                             zoom: 1,
@@ -515,7 +515,7 @@
                                 scale: 8,
                                 brushType: 'stroke',
                             },
-                            legendHoverLink: true,//点波纹动态效果
+                            legendHoverLink: true,//联动高亮效果
                             symbolSize: 18,
                             /*function (val) {//根据数值大小控制点的大小
                                return val[2] / 1;
