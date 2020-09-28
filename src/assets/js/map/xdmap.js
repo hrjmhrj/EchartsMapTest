@@ -136,6 +136,7 @@ export default {
                 {name: "新繁街道", value: "88"}],
             show: false,
             show1: false,
+            showgh: false,
             dtdivid:'mapdiv',
             chart: null,
             chart2: null,
@@ -371,10 +372,11 @@ export default {
         },
         tcmap(name) {
             this.show = true;
-            this.chart4 = this.$echarts.init(document.getElementById(this.dtdivid+'4'))
+            this.showgh = true;
+            this.chart5 = this.$echarts.init(document.getElementById(this.dtdivid+'4'))
             this.$echarts.registerMap('showmap4', this.json[name])
             let _this = this
-            _this.chart4.on('click',function (params) {
+            _this.chart5.on('click',function (params) {
                 _this.show1 = false
                 if ((params.componentType == "series") || (params.seriesType == "effectScatter")) {
                     for (let i = 0; i <_this.companyDetails.length ; i++) {
@@ -384,9 +386,9 @@ export default {
                             for (let j = 0; j <_this.xzscdata.length ; j++) {
                                 if(params.name == _this.xzscdata[j].name) {
                                     if (_this.xzscdata[j].lx > 100) {
-                                        document.getElementById("companyDetails").style.backgroundColor = "rgba(98,225,64, 0.5)"
+                                        document.getElementById("companyDetails").style.backgroundColor = "rgba(98,225,64,0.8)"
                                     } else {
-                                        document.getElementById("companyDetails").style.backgroundColor = "rgba(253,135,103, 0.5)"
+                                        document.getElementById("companyDetails").style.backgroundColor = "rgba(253,135,103,0.8)"
                                     }
                                 }
                             }
@@ -394,7 +396,7 @@ export default {
                     }
                 }
             })
-            this.chart4.setOption({
+            this.chart5.setOption({
                 tooltip:{
                     formatter:'{b}<br/>{c}万'
                 },
@@ -473,6 +475,11 @@ export default {
                         data: _this.xzscdata,
                         aspectScale: 0.85,
                         symbol: 'circle',
+                        tooltip:{
+                            textStyle:{
+                                fontSize:14
+                            },
+                        },
                         label: {
                             normal: {
                                 show: false
@@ -514,6 +521,7 @@ export default {
         closediv(){
             this.show = false
             this.show1 = false
+            this.showgh = false
         },
         closediv1(){
             this.show1 = false
