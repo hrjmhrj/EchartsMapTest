@@ -63,6 +63,7 @@
     import sanhe from '../../../static/json/sanhe.json'//引进三河街道
     import xindou from '../../../static/json/xindou.json'//引进新都街道
     import xinfan from '../../../static/json/xinfan.json'//引进新繁街道
+    import kexue from '../../../static/json/kexuecheng.json'//引进新繁街道
 
     export default {
         name: "demo",
@@ -142,6 +143,7 @@
                     sanhe:sanhe,
                     xindou:xindou,
                     xinfan:xinfan,
+                    kexue:kexue,
                 }
             }
         },
